@@ -84,5 +84,24 @@ También se conoce como **aprendizaje estadístico**.
 
 ##  Ejemplo de código
 
-Para que el código se vea como el de tu amigo, se pone entre tres backticks:
+````markdown
+```python
+from pathlib import Path
+import urllib.request
+
+datapath = Path("datasets") / "lifesat"
+datapath.mkdir(parents=True, exist_ok=True)
+
+data_root = "https://raw.githubusercontent.com/enrique-varela/ml/main/datasets/lifesat/"
+
+for filename in ("oecd_bli.csv", "gdp_per_capita.csv"):
+    file_path = datapath / filename
+    if not file_path.is_file():
+        print("Downloading", filename)
+        url = data_root + filename
+        urllib.request.urlretrieve(url, file_path)
+    else:
+        print(filename, "already exists")
+```
+````
 
